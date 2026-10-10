@@ -18,13 +18,13 @@ class Request:
 def parse(text: str) -> Request:
     if not isinstance(text, str) or not text.strip():
         raise ValueError("Empty command")
-    phrase = re.sub(r"\\s+", " ", text.strip()).casefold()
+    phrase = re.sub(r"\s+", " ", text.strip()).casefold()
     if phrase in ("lista las ventanas", "listar ventanas", "qué ventanas hay", "que ventanas hay"):
         action, app = "window.list", None
     elif phrase in ("detente", "cancela la cola", "cancelar cola"):
         action, app = "queue.cancel", None
     else:
-        match = re.fullmatch(r"(cierra (?:la ventana de |ventana de )|enfoca |abre (?:la aplicación |la aplicacion )?)([\\w .-]{1,80})", phrase)
+        match = re.fullmatch(r"(cierra (?:la ventana de |ventana de )|enfoca |abre (?:la aplicación |la aplicacion )?)([\w .-]{1,80})", phrase)
         if not match:
             raise ValueError("Unrecognized or ambiguous command")
         verb, app = match.groups()
