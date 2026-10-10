@@ -71,3 +71,17 @@ Este commit únicamente documenta la idea. **No instala software, no habilita cl
 El README anterior de **BlackMamba University** se conservó íntegro en [docs/BLACKMAMBA_UNIVERSITY_ORIGINAL.md](docs/BLACKMAMBA_UNIVERSITY_ORIGINAL.md).
 
 **READ → PLAN → AUTHORIZE → ACT → READ BACK → COMPARE → CERTIFY**
+
+## Prototipo ejecutable (v0.1.0)
+
+El repositorio incluye ahora un parser de metacomandos y simulador **sin efectos sobre macOS**: `mamba_actuator/core.py`, una CLI y pruebas unitarias.
+
+Desde la raíz del repositorio, con Python 3.10+:
+
+```bash
+python3 -m mamba_actuator "lista las ventanas"
+python3 -m mamba_actuator "cierra la ventana de Blender"
+python3 -m unittest discover -s tests -v
+```
+
+La salida de la CLI será JSON con `status: simulated` y `executed: false`. Una orden desconocida se deniega. **Las pruebas están escritas, pero su ejecución en macOS/GitHub Actions aún no se ha verificado.** No hay integración activa con WARPBLACK ni acceso al escritorio.
