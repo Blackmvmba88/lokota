@@ -1,0 +1,12 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mamba-actuator"
+version = "0.1.0"
+description = "Fail-closed metacommand simulator for desktop automation"
+requires-python = ">=3.10"
+
+[tool.setuptools.packages.find]
+include = ["mamba_actuator*"]
